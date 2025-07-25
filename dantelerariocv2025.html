@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dante L'Erario - Full Stack Developer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f5f5f5;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    .cv-container {
+      max-width: 210mm;
+      /* A4 width */
+      margin: 0 auto;
+      display: flex;
+      background: white;
+      min-height: 297mm;
+      /* A4 height */
+    }
+
+    /* Left Sidebar */
+    .left-column {
+      background: #1877f2;
+      color: white;
+      width: 35%;
+      padding: 30px 25px;
+      position: relative;
+    }
+
+    .profile-section {
+      text-align: center;
+      margin-bottom: 30px;
+      page-break-inside: avoid;
+    }
+
+    .profile-img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.2);
+      margin: 0 auto 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 50px;
+      border: 3px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .left-column h1 {
+      font-size: 22px;
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+
+    .subtitle {
+      font-size: 14px;
+      font-weight: 300;
+      opacity: 0.9;
+    }
+
+    .contact-section {
+      margin-bottom: 25px;
+      page-break-inside: avoid;
+    }
+
+    .section-title {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-title::after {
+      content: '';
+      flex: 1;
+      height: 2px;
+      background: rgba(255, 255, 255, 0.3);
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 10px;
+      font-size: 12px;
+    }
+
+    .skills-section {
+      page-break-inside: avoid;
+    }
+
+    .skill-category {
+      margin-bottom: 20px;
+      page-break-inside: avoid;
+    }
+
+    .skill-category h4 {
+      font-size: 13px;
+      font-weight: 500;
+      margin-bottom: 8px;
+      opacity: 0.9;
+    }
+
+    .skill-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 6px;
+    }
+
+    .skill-name {
+      font-size: 11px;
+      flex: 1;
+    }
+
+    .skill-level {
+      display: flex;
+      gap: 2px;
+    }
+
+    .skill-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.3);
+    }
+
+    .skill-dot.filled {
+      background: white;
+    }
+
+    .languages-section {
+      page-break-inside: avoid;
+    }
+
+    .language-item {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 6px;
+      font-size: 12px;
+    }
+
+    /* Right Column */
+    .right-column {
+      width: 65%;
+      padding: 30px 35px;
+    }
+
+    .right-column h2 {
+      color: #1877f2;
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 15px;
+      margin-top: 25px;
+      display: flex;
+      align-items: center;
+      page-break-after: avoid;
+    }
+
+    .right-column h2:first-child {
+      margin-top: 0;
+    }
+
+    .right-column h2::after {
+      content: '';
+      flex: 1;
+      height: 2px;
+      background: #e0e0e0;
+      margin-left: 15px;
+    }
+
+    .profile-text {
+      font-size: 13px;
+      color: #555;
+      margin-bottom: 20px;
+      text-align: justify;
+      page-break-inside: avoid;
+    }
+
+    .experience-item {
+      position: relative;
+      padding-left: 20px;
+      margin-bottom: 20px;
+      page-break-inside: avoid;
+    }
+
+    .experience-item::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 6px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #1877f2;
+      border: 2px solid white;
+      box-shadow: 0 0 0 2px #1877f2;
+    }
+
+    .experience-item::after {
+      content: '';
+      position: absolute;
+      left: 3px;
+      top: 16px;
+      bottom: -20px;
+      width: 2px;
+      background: #e0e0e0;
+    }
+
+    .experience-item:last-child::after {
+      display: none;
+    }
+
+    .job-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 2px;
+    }
+
+    .company-name {
+      font-size: 13px;
+      color: #1877f2;
+      margin-bottom: 2px;
+    }
+
+    .job-date {
+      font-size: 12px;
+      color: #888;
+      margin-bottom: 6px;
+    }
+
+    .job-description {
+      font-size: 12px;
+      color: #555;
+    }
+
+    .job-description ul {
+      padding-left: 18px;
+      margin-top: 4px;
+    }
+
+    .job-description li {
+      margin-bottom: 2px;
+    }
+
+    .education-section {
+      page-break-inside: avoid;
+    }
+
+    .education-item {
+      margin-bottom: 15px;
+      page-break-inside: avoid;
+    }
+
+    .education-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 2px;
+    }
+
+    .education-school {
+      font-size: 13px;
+      color: #1877f2;
+      margin-bottom: 2px;
+    }
+
+    .education-date {
+      font-size: 12px;
+      color: #888;
+    }
+
+    /* Print styles */
+    @media print {
+      body {
+        background: white;
+        margin: 0;
+      }
+
+      .cv-container {
+        box-shadow: none;
+        margin: 0;
+        display: block;
+      }
+
+      .left-column {
+        float: left;
+        height: 100%;
+        background: #1877f2 !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      .right-column {
+        margin-left: 35%;
+        width: auto;
+      }
+
+      /* Evita tagli nelle sezioni */
+      .profile-section,
+      .contact-section,
+      .skills-section,
+      .skill-category,
+      .languages-section,
+      .experience-section,
+      .experience-item,
+      .education-section,
+      .education-item {
+        page-break-inside: avoid;
+      }
+
+      /* Forza nuova pagina prima di sezioni importanti se necessario */
+      .experience-section {
+        page-break-before: auto;
+      }
+
+      /* Mantieni i titoli con il contenuto */
+      h2,
+      h3,
+      h4 {
+        page-break-after: avoid;
+      }
+
+      /* Riduci margini per ottimizzare spazio */
+      .left-column {
+        padding: 25px 20px;
+      }
+
+      .right-column {
+        padding: 25px 30px;
+      }
+
+      .right-column h2 {
+        margin-top: 20px;
+      }
+
+      .experience-item {
+        margin-bottom: 18px;
+      }
+
+      /* Fix per la timeline */
+      .experience-item::after {
+        bottom: -18px;
+      }
+    }
+
+    /* Responsive per web */
+    @media screen and (max-width: 768px) {
+      .cv-container {
+        flex-direction: column;
+      }
+
+      .left-column,
+      .right-column {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="cv-container">
+    <!-- Left Sidebar -->
+    <div class="left-column">
+      <div class="profile-section">
+        <div class="profile-img">
+          👤
+        </div>
+        <h1>Dante L'Erario</h1>
+        <p class="subtitle">Full Stack Developer</p>
+      </div>
+
+      <div class="contact-section">
+        <h3 class="section-title">Contatti</h3>
+        <div class="contact-item">
+          <span style="width: 20px; display: inline-block;">📍</span>
+          <span>Sulmona - Pescara, Abruzzo</span>
+        </div>
+        <div class="contact-item">
+          <span style="width: 20px; display: inline-block;">✉️</span>
+          <span>dantelerario@gmail.com</span>
+        </div>
+        <div class="contact-item">
+          <span style="width: 20px; display: inline-block;">📱</span>
+          <span>+39 340 67 82 957</span>
+        </div>
+        <div class="contact-item">
+          <span style="width: 20px; display: inline-block;">💼</span>
+          <span>linkedin.com/in/dantelerario</span>
+        </div>
+        <div class="contact-item">
+          <span style="width: 20px; display: inline-block;">💻</span>
+          <span>github.com/dantelerario</span>
+        </div>
+      </div>
+
+      <div class="skills-section">
+        <h3 class="section-title">Competenze</h3>
+
+        <div class="skill-category">
+          <h4>Frontend</h4>
+          <div class="skill-item">
+            <span class="skill-name">Angular</span>
+            <div class="skill-level">
+              <div class="skill-dot filled"></div>
+              <div class="skill-dot filled"></div>
+              <div class="skill-dot filled"></div>
+              <div class="skill-dot filled"></div>
+              <div class="skill-dot filled"></div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <span class="skill-name">React</span>
+            <div class="skill-level">
+              <div class="skill-dot filled"></div>
+              <div class="skill-dot filled"></div>
+              <div class="skill-dot filled"></div>
+              <div class="skill-dot filled"></div>
+              <div class="skill-dot"></div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <span class="skill-name">JavaScript/TypeScript</span>
+            <div class="skill-level">
+              <div class="skill-dot filled"></div>
+              <div class="skill-dot filled"></div>
+              <div class="skill-dot filled"></div>
+              <div class="skill-dot filled"></div>
+              <div class="skill-dot filled"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <h4>Backend</h4>
+          <div class="skill-item">
+            <span class="skill-name">PHP/Laravel</span>
+            <div class="skill-level">
+              <div class="skill-dot filled"></div>
+              <div class="skill-dot filled"></div>
+              <div class="skill-dot filled"></div>
+              <div class="skill-dot filled"></div>
+              <div class="skill-dot"></div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <span class="skill-name">Java/Spring Boot</span>
+            <div class="skill-level">
+              <div class="skill-dot filled"></div>
+              <div class="skill-dot filled"></div>
+              <div class="skill-dot filled"></div>
+              <div class="skill-dot"></div>
+              <div class="skill-dot"></div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <span class="skill-name">Python/Django</span>
+            <div class="skill-level">
+              <div class="skill-dot filled"></div>
+              <div class="skill-dot filled"></div>
+              <div class="skill-dot filled"></div>
+              <div class="skill-dot"></div>
+              <div class="skill-dot"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <h4>Database & Tools</h4>
+          <div class="skill-item">
+            <span class="skill-name">MySQL</span>
+            <div class="skill-level">
+              <div class="skill-dot filled"></div>
+              <div class="skill-dot filled"></div>
+              <div class="skill-dot filled"></div>
+              <div class="skill-dot filled"></div>
+              <div class="skill-dot"></div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <span class="skill-name">Git</span>
+            <div class="skill-level">
+              <div class="skill-dot filled"></div>
+              <div class="skill-dot filled"></div>
+              <div class="skill-dot filled"></div>
+              <div class="skill-dot filled"></div>
+              <div class="skill-dot filled"></div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <span class="skill-name">Docker</span>
+            <div class="skill-level">
+              <div class="skill-dot filled"></div>
+              <div class="skill-dot filled"></div>
+              <div class="skill-dot"></div>
+              <div class="skill-dot"></div>
+              <div class="skill-dot"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="languages-section">
+        <h3 class="section-title">Lingue</h3>
+        <div class="language-item">
+          <span>Italiano</span>
+          <span>Madrelingua</span>
+        </div>
+        <div class="language-item">
+          <span>Inglese</span>
+          <span>B2</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Column -->
+    <div class="right-column">
+      <section class="profile-section">
+        <h2>Profilo Professionale</h2>
+        <p class="profile-text">
+          Full Stack Developer con 4+ anni di esperienza nello sviluppo di applicazioni web enterprise.
+          Specializzato in architetture moderne con Angular/React per il frontend e Java/SpringBoot, Python/Django e
+          PHP/Laravel per il backend.
+          Ho contribuito con successo a progetti complessi in ambito PA e telecomunicazioni, gestendo l'intero
+          ciclo di sviluppo dal design all'implementazione. Appassionato di tecnologie innovative e best practices,
+          cerco costantemente di migliorare le mie competenze per offrire soluzioni efficienti e scalabili.
+        </p>
+      </section>
+
+      <section class="experience-section">
+        <h2>Esperienza Lavorativa</h2>
+
+        <div class="experience-item">
+          <h3 class="job-title">Full Stack Developer</h3>
+          <p class="company-name">PC Cube</p>
+          <p class="job-date">Ottobre 2022 - Presente</p>
+          <div class="job-description">
+            <ul>
+              <li>Sviluppo e manutenzione di applicazioni web enterprise con Angular, React, Springboot e Django</li>
+              <li>Implementazione di API RESTful per integrazioni con sistemi esterni</li>
+              <li>Ottimizzazione delle performance e refactoring del codice legacy</li>
+              <li>Collaborazione in team Agile/SCRUM con rilasci bisettimanali</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="experience-item">
+          <h3 class="job-title">PHP/Angular Developer</h3>
+          <p class="company-name">Pomilio Blumm</p>
+          <p class="job-date">Giugno 2022 - Agosto 2022</p>
+          <div class="job-description">
+            <ul>
+              <li>Sviluppo di moduli Angular per applicazioni della UE e applicazione gestionale in Laravel</li>
+              <li>Creazione di API PHP per la gestione documentale</li>
+              <li>Implementazione di funzionalità responsive e accessibili</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="experience-item">
+          <h3 class="job-title">PHP Developer</h3>
+          <p class="company-name">Aesys</p>
+          <p class="job-date">Marzo 2021 - Giugno 2022</p>
+          <div class="job-description">
+            <ul>
+              <li>Sviluppo backend con framework Laravel e Slim</li>
+              <li>Integrazione con servizi di terze parti e API esterne</li>
+              <li>Manutenzione e ottimizzazione database MySQL</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="experience-item">
+          <h3 class="job-title">Jr Full Stack Developer</h3>
+          <p class="company-name">GoSpesa</p>
+          <p class="job-date">Dicembre 2020 - Marzo 2021</p>
+          <div class="job-description">
+            <ul>
+              <li>Sviluppo features in PHP e Javascript per piattaforma e-commerce</li>
+              <li>Implementazione sistema di gestione ordini</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="experience-item">
+          <h3 class="job-title">Jr Developer Trainee</h3>
+          <p class="company-name">Boolean Careers</p>
+          <p class="job-date">Febbraio 2020 - Agosto 2020</p>
+          <div class="job-description">
+            <ul>
+              <li>Formazione intensiva Full Stack: HTML, CSS, JavaScript, PHP, Laravel, Vue.js</li>
+              <li>Progetti pratici con metodologie Agile</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="education-section">
+        <h2>Formazione</h2>
+
+        <div class="education-item">
+          <h3 class="education-title">Corso Full Stack Web Developer</h3>
+          <p class="education-school">Boolean Careers</p>
+          <p class="education-date">2020 - Completato con successo</p>
+        </div>
+
+        <div class="education-item">
+          <h3 class="education-title">Laurea in Informatica</h3>
+          <p class="education-school">Università degli Studi dell'Aquila</p>
+          <p class="education-date">In corso</p>
+        </div>
+        <div class="education-item">
+          <h3 class="education-title">Laurea in Tecniche della Prevenzione negli Ambienti e nei Luoghi di Lavoro</h3>
+          <p class="education-school">Università degli Studi dell'Aquila</p>
+        </div>
+      </section>
+    </div>
+  </div>
+</body>
+
+</html>
